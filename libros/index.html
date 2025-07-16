@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header Fijo con Testamentos Completos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            /* Establecemos el body para que ocupe el 100% de la altura del viewport */
+            height: 100vh;
+            /* Usamos Flexbox para organizar el header y el main-content en una columna */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Evita el scroll del body si el contenido interno lo maneja */
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            /* Le damos una altura definida al header. ¡Ajusta si tu header es más alto! */
+            height: 60px; /* Altura de ejemplo para el header */
+            flex-shrink: 0; /* Asegura que el header no se encoja */
+            width: 100%; /* Asegura que el header ocupe todo el ancho */
+            z-index: 20; /* Asegura que el header esté por encima de otros elementos */
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            transition: background-color 0.3s ease, border-radius 0.3s ease;
+            display: block;
+            border-radius: 4px;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* Estilos del submenú */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 10; /* Asegura que esté por encima de otros elementos */
+            top: 100%; /* Se posiciona justo debajo del elemento padre */
+            left: 0;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-radius: 0 0 4px 4px;
+            max-height: 350px;
+            overflow-y: auto;
+            animation: fadeIn 0.3s forwards;
+        }
+
+        .submenu li a {
+            color: white;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            border-radius: 0;
+        }
+        .submenu li a:hover {
+            background-color: #666;
+        }
+
+        /* Mostrar submenú al pasar el ratón */
+        nav ul li:hover .submenu {
+            display: block;
+        }
+
+        /* Animación para el submenú */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilo para el área de contenido principal */
+        .main-content {
+            padding: 0; /* Elimina el padding para que el iframe se ajuste al 100% */
+            text-align: center;
+            /* La clave: ocupa el 100% del espacio restante después del header */
+            flex-grow: 1; /* Permite que este elemento ocupe todo el espacio disponible */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden; /* Asegura que el contenido del PDF se recorte si es más grande y el iframe tiene scroll propio */
+            background-color: #f0f0f0; /* Color de fondo para ver el área si no hay PDF */
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%; /* El iframe ocupa el 100% del main-content */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="menu-right">
+            <ul>
+                <li class="has-submenu">
+                    <a href="#">ANTIGUO TESTAMENTO &#9662;</a>
+                    <ul class="submenu">
+                        <li><a href="GENESIS.pdf" data-book="genesis">Génesis</a></li>
+                        <li><a href="EXODO.pdf" data-book="exodo">Éxodo</a></li>
+                        <li><a href="LEVITICO.pdf" data-book="levitico">Levítico</a></li>
+                        <li><a href="NUMEROS.pdf" data-book="numeros">Números</a></li>
+                        <li><a href="DEUTERONOMIO.pdf" data-book="deuteronomio">Deuteronomio</a></li>
+                        <li><a href="JOSUE.pdf" data-book="josue">Josué</a></li>
+                        <li><a href="JUECES.pdf" data-book="jueces">Jueces</a></li>
+                        <li><a href="RUT.pdf" data-book="rut">Rut</a></li>
+                        <li><a href="1SAMUEL.pdf" data-book="1samuel">1 Samuel</a></li>
+                        <li><a href="2SAMUEL.pdf" data-book="2samuel">2 Samuel</a></li>
+                        <li><a href="1REYES.pdf" data-book="1reyes">1 Reyes</a></li>
+                        <li><a href="2REYES.pdf" data-book="2reyes">2 Reyes</a></li>
+                        <li><a href="1CRONICAS.pdf" data-book="1cronicas">1 Crónicas</a></li>
+                        <li><a href="2CRONICAS.pdf" data-book="2cronicas">2 Crónicas</a></li>
+                        <li><a href="ESDRAS.pdf" data-book="esdras">Esdras</a></li>
+                        <li><a href="NEHEMIAS.pdf" data-book="nehemias">Nehemías</a></li>
+                        <li><a href="TOBIAS.pdf" data-book="tobias">Tobías</a></li>
+                        <li><a href="JUDIT.pdf" data-book="judit">Judit</a></li>
+                        <li><a href="ESTER.pdf" data-book="ester">Ester</a></li>
+                        <li><a href="1MACABEOS.pdf" data-book="1macabeos">1 Macabeos</a></li>
+                        <li><a href="2MACABEOS.pdf" data-book="2macabeos">2 Macabeos</a></li>
+                        <li><a href="JOB.pdf" data-book="job">Job</a></li>
+                        <li><a href="SALMOS.pdf" data-book="salmos">Salmos</a></li>
+                        <li><a href="PROVERBIOS.pdf" data-book="proverbios">Proverbios</a></li>
+                        <li><a href="ECLESIASTES.pdf" data-book="eclesiastes">Eclesiastés</a></li>
+                        <li><a href="CANTARDELOSCANTARES.pdf" data-book="cantardeloscantares">Cantar de los cantares</a></li>
+                        <li><a href="SABIDURIA.pdf" data-book="sabiduria">Sabiduría</a></li>
+                        <li><a href="ECLESIASTICO.pdf" data-book="eclesiastico">Eclesiástico</a></li>
+                        <li><a href="ISAIAS.pdf" data-book="isaias">Isaías</a></li>
+                        <li><a href="JEREMIAS.pdf" data-book="jeremias">Jeremías</a></li>
+                        <li><a href="LAMENTACIONES.pdf" data-book="lamentaciones">Lamentaciones</a></li>
+                        <li><a href="BARUC.pdf" data-book="baruc">Baruc</a></li>
+                        <li><a href="EZEQUIEL.pdf" data-book="ezequiel">Ezequiel</a></li>
+                        <li><a href="DANIEL.pdf" data-book="daniel">Daniel</a></li>
+                        <li><a href="OSEAS.pdf" data-book="oseas">Oseas</a></li>
+                        <li><a href="JOEL.pdf" data-book="joel">Joel</a></li>
+                        <li><a href="AMOS.pdf" data-book="amos">Amós</a></li>
+                        <li><a href="ABDIAS.pdf" data-book="abdias">Abdías</a></li>
+                        <li><a href="JONAS.pdf" data-book="jonas">Jonás</a></li>
+                        <li><a href="MIQUEAS.pdf" data-book="miqueas">Miqueas</a></li>
+                        <li><a href="NAHUM.pdf" data-book="nahum">Nahúm</a></li>
+                        <li><a href="HABACUC.pdf" data-book="habacuc">Habacuc</a></li>
+                        <li><a href="SOFONIAS.pdf" data-book="sofonias">Sofonías</a></li>
+                        <li><a href="AGEO.pdf" data-book="ageo">Ageo</a></li>
+                        <li><a href="ZACARIAS.pdf" data-book="zacarias">Zacarías</a></li>
+                        <li><a href="MALAQUIAS.pdf" data-book="malaquias">Malaquías</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">NUEVO TESTAMENTO &#9662;</a>
+                    <ul class="submenu">
+                        <li><a href="pdfs/mateo.pdf" data-book="mateo">Mateo</a></li>
+                        <li><a href="pdfs/marcos.pdf" data-book="marcos">Marcos</a></li>
+                        <li><a href="pdfs/lucas.pdf" data-book="lucas">Lucas</a></li>
+                        <li><a href="pdfs/juan.pdf" data-book="juan">Juan</a></li>
+                        <li><a href="pdfs/hechosdelosapostoles.pdf" data-book="hechosdelosapostoles">Hechos de los Apostoles</a></li>
+                        <li><a href="pdfs/romanos.pdf" data-book="romanos">Romanos</a></li>
+                        <li><a href="pdfs/1corintios.pdf" data-book="1corintios">1 Corintios</a></li>
+                        <li><a href="pdfs/2corintios.pdf" data-book="2corintios">2 Corintios</a></li>
+                        <li><a href="pdfs/galatas.pdf" data-book="galatas">Gálatas</a></li>
+                        <li><a href="pdfs/efesios.pdf" data-book="efesios">Efesios</a></li>
+                        <li><a href="pdfs/filipenses.pdf" data-book="filipenses">Filipenses</a></li>
+                        <li><a href="pdfs/colosenses.pdf" data-book="colosenses">Colosenses</a></li>
+                        <li><a href="pdfs/1tesalonicenses.pdf" data-book="1tesalonicenses">1 Tesalonicenses</a></li>
+                        <li><a href="pdfs/2tesalonicenses.pdf" data-book="2tesalonicenses">2 Tesalonicenses</a></li>
+                        <li><a href="pdfs/1timoteo.pdf" data-book="1timoteo">1 Timoteo</a></li>
+                        <li><a href="pdfs/2timoteo.pdf" data-book="2timoteo">2 Timoteo</a></li>
+                        <li><a href="pdfs/tito.pdf" data-book="tito">Tito</a></li>
+                        <li><a href="pdfs/filemon.pdf" data-book="filemon">Filemón</a></li>
+                        <li><a href="pdfs/hebreos.pdf" data-book="hebreos">Hebreos</a></li>
+                        <li><a href="pdfs/santiago.pdf" data-book="santiago">Santiago</a></li>
+                        <li><a href="pdfs/1pedro.pdf" data-book="1pedro">1 Pedro</a></li>
+                        <li><a href="pdfs/2pedro.pdf" data-book="2pedro">2 Pedro</a></li>
+                        <li><a href="pdfs/1juan.pdf" data-book="1juan">1 Juan</a></li>
+                        <li><a href="pdfs/2juan.pdf" data-book="2juan">2 Juan</a></li>
+                        <li><a href="pdfs/3juan.pdf" data-book="3juan">3 Juan</a></li>
+                        <li><a href="pdfs/judas.pdf" data-book="judas">Judas</a></li>
+                        <li><a href="pdfs/apocalipsis.pdf" data-book="apocalipsis">Apocalipsis</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="book-content" class="main-content">
+        <h2>¡Bienvenido! 👋</h2>
+        <p>Selecciona un libro de la Biblia para ver su contenido.</p>
+        
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainContent = document.getElementById('book-content');
+            const menuLinks = document.querySelectorAll('.submenu a');
+
+            menuLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const pdfUrl = event.target.href;
+
+                    // Reemplazamos el contenido con un iframe que carga el PDF
+                    mainContent.innerHTML = `<iframe class="pdf-viewer" src="${pdfUrl}" frameborder="0"></iframe>`;
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

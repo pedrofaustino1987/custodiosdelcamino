@@ -1,0 +1,416 @@
+/* style.css */
+
+body {
+    font-family: 'Inter', sans-serif; /* Usamos Inter como fuente principal */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #A020F0; /* Tu color violeta para el fondo de la página */
+    color: #333;
+}
+
+/* Estilos para el encabezado superior (top-header) */
+.top-header {
+    background-color: #000; /* Un gris oscuro similar al de la imagen */
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos al final (derecha) */
+    align-items: center;
+    border-radius: 0 0 8px 8px; /* Bordes redondeados en la parte inferior */
+}
+
+.social-icons {
+    margin-right: 20px; /* Espacio entre los iconos y la barra de búsqueda */
+}
+
+.social-icons a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #79D1C3; /* Color celeste/turquesa para el fondo del círculo */
+    color: #fff; /* Color blanco para el icono */
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0 5px; /* Espacio entre los círculos */
+}
+
+.social-icons a:hover {
+    background-color: #5bb7a9; /* Tono más oscuro al pasar el ratón para el círculo */
+    transform: scale(1.1); /* Ligero efecto de zoom */
+}
+
+.search-bar {
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search-bar input {
+    border: none;
+    padding: 8px 10px;
+    outline: none;
+    background-color: #2c3a42; /* Un gris aún más oscuro para el input */
+    color: #fff;
+    width: 180px;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+    background-color: #79D1C3; /* Color del botón de búsqueda */
+    border: none;
+    padding: 8px 12px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-bar button:hover {
+    background-color: #5bb7a9;
+}
+
+/* Estilos para el encabezado principal (main-header) */
+.main-header {
+    background-color: #fff; /* Fondo blanco */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px; /* Bordes redondeados en la parte inferior */
+    margin-bottom: 0; /* Ahora pegado al slideshow */
+}
+
+.main-header .logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    border-radius: 8px; /* Bordes redondeados para el logo */
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin: 0 15px;
+}
+
+.main-nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #79D1C3;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+    color: #79D1C3;
+}
+
+.contact-info {
+    text-align: right;
+}
+
+.contact-info span {
+    display: block;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-info a {
+    color: #79D1C3;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #5bb7a9;
+}
+
+.contact-info .fas {
+    color: #79D1C3;
+    margin-right: 5px;
+}
+
+/* ---------------------------------------------------- */
+/* ESTILOS PARA EL SLIDESHOW                          */
+/* ---------------------------------------------------- */
+.slideshow-container {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    position: relative;
+    margin: 0; /* Eliminamos el margen automático para que ocupe todo el ancho */
+    border-radius: 0; /* Eliminamos los bordes redondeados para un look de ancho completo */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    vertical-align: middle;
+    width: 100%; /* Asegura que la imagen ocupe el 100% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 0; /* Eliminamos los bordes redondeados de las imágenes */
+}
+
+/* Texto de los slides */
+.text {
+    color: #f2f2f2;
+    font-size: 1.5em;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+}
+
+/* Número (1/3, 2/3, etc.) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+}
+
+/* Botones Anterior y Siguiente */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Posicionar el botón "Siguiente" a la derecha */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Efecto al pasar el ratón por los botones */
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Puntos indicadores */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #79D1C3;
+}
+
+/* Animación de desvanecimiento */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* ---------------------------------------------------- */
+/* ESTILOS GENERALES Y FOOTER                         */
+/* ---------------------------------------------------- */
+main {
+    padding: 20px;
+    max-width: 960px;
+    margin: 20px auto 0; /* Se eliminó el margen inferior para que se pegue al footer */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8em;
+    margin-top: 0; /* Se eliminó el margen superior para que se pegue al main */
+    border-radius: 8px 8px 0 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ---------------------------------------------------- */
+/* MEDIA QUERIES PARA RESPONSIVE DESIGN               */
+/* ---------------------------------------------------- */
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .top-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .social-icons {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .search-bar {
+        width: 90%;
+        justify-content: center;
+    }
+
+    .search-bar input {
+        width: calc(100% - 40px);
+    }
+
+    .main-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 10px;
+        text-align: center;
+    }
+
+    .main-header .logo {
+        margin-bottom: 15px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .main-nav ul li {
+        margin: 5px 0;
+        width: 100%;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 0;
+        display: block;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav ul li:last-child a {
+        border-bottom: none;
+    }
+
+    .contact-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-info span,
+    .contact-info a {
+        margin-bottom: 5px;
+    }
+
+    /* Ajustes para el slideshow en móviles */
+    .slideshow-container {
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .mySlides img {
+        border-radius: 0;
+    }
+
+    .text {
+        font-size: 1.2em;
+    }
+
+    .prev, .next {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .dot {
+        height: 12px;
+        width: 12px;
+    }
+
+    /* Ajustes para el contenido principal */
+    main {
+        margin: 10px auto 0; /* Se eliminó el margen inferior */
+        padding: 15px;
+        border-radius: 0;
+    }
+
+    section {
+        margin-bottom: 20px;
+    }
+}
+
+/* Opcional: Estilos para pantallas medianas (tablets) si lo necesitas */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .main-nav ul li {
+        margin: 0 10px;
+    }
+}
+
+/* Estilos para pantallas muy grandes (opcional) */
+@media (min-width: 1200px) {
+    main {
+        max-width: 1100px;
+    }
+}
